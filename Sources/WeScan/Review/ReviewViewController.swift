@@ -35,14 +35,14 @@ final class ReviewViewController: UIViewController {
             compatibleWith: nil
         )
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(toggleEnhancedImage))
-        button.tintColor = .white
+        button.tintColor = navigationController?.navigationBar.tintColor
         return button
     }()
 
     private lazy var rotateButton: UIBarButtonItem = {
         let image = UIImage(systemName: "rotate.right", named: "rotate", in: Bundle(for: ScannerViewController.self), compatibleWith: nil)
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(rotateImage))
-        button.tintColor = .white
+        button.tintColor = navigationController?.navigationBar.tintColor
         return button
     }()
 
@@ -70,13 +70,15 @@ final class ReviewViewController: UIViewController {
 
         enhancedImageIsAvailable = results.enhancedScan != nil
 
+        navigationController?.navigationBar.tintColor = (traitCollection.userInterfaceStyle == .light ? .black : .white)
         setupViews()
         setupToolbar()
         setupConstraints()
+        
 
         title = NSLocalizedString("wescan.review.title",
                                   tableName: nil,
-                                  bundle: Bundle(for: ReviewViewController.self),
+                                  bundle: .module,
                                   value: "Review",
                                   comment: "The review title of the ReviewController"
         )
@@ -106,7 +108,8 @@ final class ReviewViewController: UIViewController {
     private func setupToolbar() {
         guard enhancedImageIsAvailable else { return }
 
-        navigationController?.toolbar.barStyle = .blackTranslucent
+        navigationController?.toolbar.barStyle = .black
+        navigationController?.toolbar.isTranslucent = true
 
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

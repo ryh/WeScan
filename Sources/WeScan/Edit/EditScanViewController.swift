@@ -33,7 +33,7 @@ final class EditScanViewController: UIViewController {
     private lazy var nextButton: UIBarButtonItem = {
         let title = NSLocalizedString("wescan.edit.button.next",
                                       tableName: nil,
-                                      bundle: Bundle(for: EditScanViewController.self),
+                                      bundle: .module,
                                       value: "Next",
                                       comment: "A generic next button"
         )
@@ -45,7 +45,7 @@ final class EditScanViewController: UIViewController {
     private lazy var cancelButton: UIBarButtonItem = {
         let title = NSLocalizedString("wescan.scanning.cancel",
                                       tableName: nil,
-                                      bundle: Bundle(for: EditScanViewController.self),
+                                      bundle: .module,
                                       value: "Cancel",
                                       comment: "A generic cancel button"
         )
@@ -82,9 +82,10 @@ final class EditScanViewController: UIViewController {
 
         setupViews()
         setupConstraints()
+        navigationController?.navigationBar.tintColor = (traitCollection.userInterfaceStyle == .light ? .black : .white)
         title = NSLocalizedString("wescan.edit.title",
                                   tableName: nil,
-                                  bundle: Bundle(for: EditScanViewController.self),
+                                  bundle: .module,
                                   value: "Edit Scan",
                                   comment: "The title of the EditScanViewController"
         )
