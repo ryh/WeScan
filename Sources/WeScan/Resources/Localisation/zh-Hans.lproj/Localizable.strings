@@ -13,7 +13,7 @@
 "wescan.edit.title" = "编辑";
 
 /* The title on the navigation bar of the Review screen. */
-"wescan.review.title" = "回顾";
+"wescan.review.title" = "审核";
 
 /* The button titles on the Scanning screen. */
 "wescan.scanning.cancel" = "取消";
